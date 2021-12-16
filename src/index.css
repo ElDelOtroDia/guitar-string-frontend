@@ -17,6 +17,31 @@ body {
   flex: 1;
 }
 
-.guitar-string {
-  font-family: "Gloria Hallelujah", cursive;
+:root {
+  --guitar-orange: #ff8800;
+  --guitar-orange-hover: #e47900;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: gainsboro;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--guitar-orange);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--guitar-orange-hover);
+  border-radius: 5px;
+}
+
+.link-no-style {
+  text-decoration: none;
 }

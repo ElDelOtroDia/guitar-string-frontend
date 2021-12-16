@@ -1,0 +1,64 @@
+.layout-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background: url("../assets/jpg/guitar-bg2.jpg") no-repeat center center fixed;
+}
+
+.guitar-string-header {
+  height: 80px;
+  width: 100%;
+  padding: 0 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.header-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.75rem;
+  color: white;
+  text-decoration: none;
+  font-family: "Gloria Hallelujah", cursive;
+  flex: 1;
+}
+
+.header-logo-guitar-pick {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.guitar-string-header-buttons {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.guitar-string-header-buttons li {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  transition: all .25s;
+}
+
+.guitar-string-header-buttons li:hover {
+  color: var(--guitar-orange);
+  cursor: pointer;
+}
+
+.page-content {
+  overflow-y: scroll;
+  width: 100vw;
+  height: calc(100% - 80px);
+}

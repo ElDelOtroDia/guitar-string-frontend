@@ -9,7 +9,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("../../assets/jpg/guitar-bg2.jpg") no-repeat center center;
 }
 
 .form-container {
@@ -18,7 +17,6 @@
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.6);
-  /* background: rgba(255, 255, 255, 0.1); */
   min-height: 50%;
   width: 40%;
   padding-bottom: 30px;
@@ -28,11 +26,12 @@
   border-radius: 20px;
 }
 
-.guitar-string-logo {
+.guitar-string-logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2.5rem;
+  font-family: "Gloria Hallelujah", cursive;
 }
 
 .guitar-pick {
@@ -59,13 +58,13 @@
 
 .register-here:hover {
   font-weight: 700;
-  color: #ff6600;
+  color: var(--guitar-orange);
   cursor: pointer;
 }
 
 .login-button {
   color: white;
-  background-color: #ff6600;
+  background-color: var(--guitar-orange);
   margin-top: 10px;
   padding: 12px 20px;
   border-radius: 10px;
@@ -75,7 +74,7 @@
 }
 
 .login-button:hover {
-  color: #ff6600;
+  color: var(--guitar-orange);
   background-color: #fff;
 }
 

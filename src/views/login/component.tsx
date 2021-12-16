@@ -1,8 +1,10 @@
 import { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import images from "../../assets";
 import "./styles.css";
 
 const Login: FC = () => {
+  const navigate = useNavigate();
   const { GuitarPick } = images;
 
   const [isNewUser, setIsNewUser] = useState(false);
@@ -11,65 +13,70 @@ const Login: FC = () => {
     <div className="login-container">
       {!isNewUser ? (
         <div className="form-container">
-          <div className="guitar-string-logo">
+          <div className="guitar-string-logo-container">
             <GuitarPick className="guitar-pick" />
-            <div className="guitar-string">GuitarString</div>
+            <div className="guitar-string-text">GuitarString</div>
           </div>
           <div className="form-input-container">
-            <label htmlFor="">Correo electrónico</label>
+            <label htmlFor="">Email</label>
             <input type="text" />
           </div>
           <div className="form-input-container">
-            <label htmlFor="">Contraseña</label>
+            <label htmlFor="">Password</label>
             <input type="password" />
           </div>
           <p>
-            ¿Nuevo usuario?{" "}
+            New user?{" "}
             <span
               className="register-here"
               onClick={() => {
                 setIsNewUser(true);
               }}
             >
-              Regístrate aquí
+              Register here
             </span>
           </p>
-          <button className="login-button">Iniciar sesión</button>
+          <button
+            className="login-button"
+            onClick={() => navigate("/", { replace: true })}
+          >
+            Log in
+          </button>
         </div>
       ) : (
         <div className="form-container">
-          <div className="guitar-string-logo">
+          <div className="guitar-string-logo-container">
             <GuitarPick className="guitar-pick" />
-            <div className="guitar-string">GuitarString</div>
+            <div className="guitar-string-text">GuitarString</div>
           </div>
           <div className="form-input-container">
-            <label htmlFor="">Nombre(s)</label>
+            <label htmlFor="">First name</label>
             <input type="text" />
           </div>
           <div className="form-input-container">
-            <label htmlFor="">Apellidos</label>
+            <label htmlFor="">Last name</label>
             <input type="text" />
           </div>
           <div className="form-input-container">
-            <label htmlFor="">Correo electrónico</label>
+            <label htmlFor="">Email</label>
             <input type="text" />
           </div>
           <div className="form-input-container">
-            <label htmlFor="">Contraseña</label>
+            <label htmlFor="">Password</label>
             <input type="password" />
           </div>
           <p>
-            ¿Ya tienes una cuenta?{" "}
+            Already have an accout?{" "}
             <span
               className="register-here"
               onClick={() => {
                 setIsNewUser(false);
               }}
             >
-              Inicia sesión
+              Log in here
             </span>
           </p>
-          <button className="login-button">Registrarse</button>
+          <button className="login-button">Register</button>
         </div>
       )}
     </div>
