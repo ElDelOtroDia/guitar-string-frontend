@@ -82,6 +82,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  line-height: 2.2rem;
 }
 
 .welcome-title {
@@ -95,9 +96,9 @@
 .welcome-tips {
   margin-top: 2.2rem;
   white-space: pre-line;
-  line-height: 2.2rem;
 }
 
+.orange-point-list,
 .welcome-tips-title {
   font-weight: bold;
   color: var(--guitar-orange);

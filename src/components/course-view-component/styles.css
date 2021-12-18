@@ -1,12 +1,60 @@
 .course-view-component-container {
-  animation: fadein 2s;
+  height: 100%;
+  font-size: 1.1rem;
+  padding: 50px;
+  max-width: 78ch;
+  margin: auto;
 }
 
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.course-name {
+  text-align: center;
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 2.5rem;
+  color: var(--guitar-orange);
+}
+
+.course-description {
+  padding-bottom: 16px;
+}
+
+.course-difficulty {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1.2rem;
+}
+
+.exercises-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.exercises-title-container hr {
+  width: 100%;
+  margin-left: 10px;
+  border: 0;
+  border-top: 1px solid var(--guitar-orange);
+}
+
+.exercises-title {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1.5rem;
+  color: var(--guitar-orange);
+}
+
+.exercise-container {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.exercise-name {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-family: "Gloria Hallelujah", cursive;
+}
+
+.exercise-description{
+  line-height: 1.8rem;
 }

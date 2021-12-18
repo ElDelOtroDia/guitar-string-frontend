@@ -1,11 +1,12 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import CourseViewComponent from "../../components/course-view-component/component";
 import "./styles.css";
 
 const Home: FC = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  const courses = [
+  const courses1 = [
     {
       course_id: 3,
       name: "Ligature",
@@ -64,6 +65,35 @@ const Home: FC = () => {
     },
   ];
 
+  const [courses, setCourses] = useState(courses1);
+
+  const courseTips = [
+    "Always warm your fingers a bit by doing some push-ups, opening and closing your fists, etc.",
+    "Make sure you have your guitar in tune before starting a session.",
+    "Use the metronome whenever you can.",
+    "Avoid any kind of distraction during your practice sessions.",
+    "Practice for at least 15 minutes per session.",
+  ];
+
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   const getCourses = async () => {
+  //     try {
+  //       dispatch(pushLoading());
+  //       const receivedCourses = await fetchCourses();
+  //       setCourses(receivedCourses);
+  //     } catch (e: any) {
+  //       console.log(e);
+  //     } finally {
+  //       dispatch(popLoading());
+  //     }
+  //   };
+
+  //   if (courses === null) {
+  //     getCourses();
+  //   }
+  // }, [dispatch]);
+
   return (
     <div className="home-container">
       <div className="courses-container">
@@ -104,10 +134,13 @@ const Home: FC = () => {
                 <span className="welcome-tips-title">
                   Tips for getting the most out of these exercises:
                 </span>
-                {`\n• Always warm your fingers a bit by doing some push-ups, opening and closing your fists, etc.
-              • Make sure you have your guitar in tune before starting a session.
-              • Use the metronome whenever you can.
-              • Avoid any kind of distraction during your practice sessions.\n\n\n`}
+                <br />
+                {courseTips.map((tip) => (
+                  <span key={tip}>
+                    <span className="orange-point-list">•</span> {tip} <br />
+                  </span>
+                ))}
+                <br />
               </p>
             </div>
           ) : (
