@@ -1,8 +1,10 @@
 import { FC, useState } from "react";
+import CourseViewComponent from "../../components/course-view-component/component";
 import "./styles.css";
 
 const Home: FC = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
+
   const courses = [
     {
       course_id: 3,
@@ -61,6 +63,7 @@ const Home: FC = () => {
       ],
     },
   ];
+
   return (
     <div className="home-container">
       <div className="courses-container">
@@ -70,23 +73,47 @@ const Home: FC = () => {
             className={`course-card-container ${
               activeIndex === -1 ? "active-course-card" : ""
             }`}
-            onClick={() => setActiveIndex(-1)}
+            onClick={() => (activeIndex !== -1 ? setActiveIndex(-1) : null)}
           >
             Welcome
           </div>
           {courses.map((course, index) => (
             <div
-              key={course.course_id}
+              key={`course-view-${course.course_id}`}
               className={`course-card-container ${
                 activeIndex === index ? "active-course-card" : ""
               }`}
-              onClick={() => setActiveIndex(index)}
+              onClick={() =>
+                activeIndex !== index ? setActiveIndex(index) : null
+              }
             >
               <p>{course.name}</p>
             </div>
           ))}
         </div>
-        <div className="courses-view">b</div>
+        <div className="courses-view">
+          {activeIndex === -1 ? (
+            <div className="welcome-view-container">
+              <p className="welcome-title">Welcome!</p>
+              <p>
+                Hello! Please make yourself comfortable and enjoy the most
+                useful guitar exercises to develop your skills to the fullest
+                and in a short time.{" "}
+              </p>
+              <p className="welcome-tips">
+                <span className="welcome-tips-title">
+                  Tips for getting the most out of these exercises:
+                </span>
+                {`\n• Always warm your fingers a bit by doing some push-ups, opening and closing your fists, etc.
+              • Make sure you have your guitar in tune before starting a session.
+              • Use the metronome whenever you can.
+              • Avoid any kind of distraction during your practice sessions.\n\n\n`}
+              </p>
+            </div>
+          ) : (
+            <CourseViewComponent course={courses[activeIndex]} />
+          )}
+        </div>
       </div>
     </div>
   );

@@ -76,6 +76,7 @@
 .login-button:hover {
   color: var(--guitar-orange);
   background-color: #fff;
+  cursor: pointer;
 }
 
 .login-button:active {

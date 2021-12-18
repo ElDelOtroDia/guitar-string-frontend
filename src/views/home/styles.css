@@ -2,6 +2,8 @@
   height: 100%;
   padding: 20px;
   overflow-y: hidden;
+  max-width: 1600px;
+  margin: auto;
 }
 
 .courses-container {
@@ -11,6 +13,7 @@
   height: 100%;
   padding: 20px;
   color: white;
+  backdrop-filter: blur(5px);
 }
 
 .courses-list {
@@ -27,7 +30,7 @@
 
 .courses-title {
   font-family: "Gloria Hallelujah", cursive;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   text-align: center;
 }
 
@@ -35,6 +38,8 @@
   border: 1px solid gainsboro;
   padding: 10px;
   transition: all 0.25s;
+  font-size: 1.1rem;
+  border-radius: 5px;
 }
 
 .course-card-container:hover {
@@ -42,7 +47,7 @@
   color: var(--guitar-orange);
   cursor: pointer;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .active-course-card {
@@ -54,6 +59,7 @@
 
 .active-course-card:hover {
   color: white;
+  border-radius: 5px;
 }
 
 .courses-view {
@@ -63,4 +69,36 @@
   padding: 10px;
   overflow-y: scroll;
   height: calc(100vh - 80px - 80px);
+}
+
+.welcome-view-container {
+  height: 100%;
+  font-size: 1.1rem;
+  padding: 80px 50px 50px 50px;
+  max-width: 78ch;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.welcome-title {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--guitar-orange);
+  font-weight: bold;
+}
+
+.welcome-tips {
+  margin-top: 2.2rem;
+  white-space: pre-line;
+  line-height: 2.2rem;
+}
+
+.welcome-tips-title {
+  font-weight: bold;
+  color: var(--guitar-orange);
 }
