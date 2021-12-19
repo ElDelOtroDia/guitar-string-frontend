@@ -1,71 +1,15 @@
 import { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import CourseViewComponent from "../../components/course-view-component/component";
+import { popLoading, pushLoading } from "../../redux/ui/actions";
+import { fetchCourses } from "../../services/courses/services";
+import { Course } from "../../models/courses/types";
 import "./styles.css";
 
 const Home: FC = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  const courses1 = [
-    {
-      course_id: 3,
-      name: "Ligature",
-      description: "dsaflkjahslkjdfas",
-      difficulty: "Baja",
-      exercises: [
-        {
-          exercise_id: 2,
-          name: "Ejercicio blafas",
-          description: "adjhsfjksad",
-          image_url: "sdakjflaksd",
-          audio_url: "asdkjlhjfadsk",
-          course_id: 3,
-        },
-        {
-          exercise_id: 3,
-          name: "jyrdhjnf",
-          description: "adjhsfjksadsfgjsfdg",
-          image_url: "sdakjflaksddfgdff",
-          audio_url: "sfdhwrth",
-          course_id: 3,
-        },
-      ],
-    },
-    {
-      course_id: 4,
-      name: "Hammer-On",
-      description: "adsfasd",
-      difficulty: "Baja",
-      exercises: [
-        {
-          exercise_id: 4,
-          name: "hammer light",
-          description: "sadfasdfasd",
-          image_url: "345wergfwer",
-          audio_url: "sdfgsdf5465",
-          course_id: 4,
-        },
-      ],
-    },
-    {
-      course_id: 5,
-      name: "curso 1sdkfljg",
-      description: "dslfkasdjasdkgfjhasldkfj",
-      difficulty: "kfjasdhfklajs",
-      exercises: [
-        {
-          exercise_id: 5,
-          name: "jkeahlke",
-          description: "sdkjfhgds;sld",
-          image_url: "dsaklfjhgskjldfh",
-          audio_url: "asdfkjhgsdlkj",
-          course_id: 5,
-        },
-      ],
-    },
-  ];
-
-  const [courses, setCourses] = useState(courses1);
+  const [courses, setCourses] = useState<Course[] | null>(null);
 
   const courseTips = [
     "Always warm your fingers a bit by doing some push-ups, opening and closing your fists, etc.",
@@ -75,24 +19,24 @@ const Home: FC = () => {
     "Practice for at least 15 minutes per session.",
   ];
 
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   const getCourses = async () => {
-  //     try {
-  //       dispatch(pushLoading());
-  //       const receivedCourses = await fetchCourses();
-  //       setCourses(receivedCourses);
-  //     } catch (e: any) {
-  //       console.log(e);
-  //     } finally {
-  //       dispatch(popLoading());
-  //     }
-  //   };
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const getCourses = async () => {
+      try {
+        dispatch(pushLoading());
+        const receivedCourses = await fetchCourses();
+        setCourses(receivedCourses);
+      } catch (e: any) {
+        console.log(e);
+      } finally {
+        dispatch(popLoading());
+      }
+    };
 
-  //   if (courses === null) {
-  //     getCourses();
-  //   }
-  // }, [dispatch]);
+    if (courses === null) {
+      getCourses();
+    }
+  }, [dispatch, courses]);
 
   return (
     <div className="home-container">
@@ -107,9 +51,9 @@ const Home: FC = () => {
           >
             Welcome
           </div>
-          {courses.map((course, index) => (
+          {courses?.map((course, index) => (
             <div
-              key={`course-view-${course.course_id}`}
+              key={`course-view-${course.id}`}
               className={`course-card-container ${
                 activeIndex === index ? "active-course-card" : ""
               }`}
@@ -144,7 +88,9 @@ const Home: FC = () => {
               </p>
             </div>
           ) : (
-            <CourseViewComponent course={courses[activeIndex]} />
+            <CourseViewComponent
+              course={courses?.length ? courses[activeIndex] : null}
+            />
           )}
         </div>
       </div>

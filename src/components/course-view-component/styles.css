@@ -14,7 +14,12 @@
 }
 
 .course-description {
-  padding-bottom: 16px;
+  margin-top: 8px;
+  line-height: 1.8rem;
+}
+
+.course-difficulty-container {
+  margin-top: 18px;
 }
 
 .course-difficulty {
@@ -26,7 +31,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 32px;
+  margin-top: 20px;
 }
 
 .exercises-title-container hr {
@@ -43,10 +48,8 @@
 }
 
 .exercise-container {
-  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
 }
 
 .exercise-name {
@@ -55,6 +58,17 @@
   font-family: "Gloria Hallelujah", cursive;
 }
 
-.exercise-description{
+.exercise-description {
   line-height: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.exercise-image {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.exercise-image img {
+  /* max-height: 100px; */
+  width: 100%;
 }

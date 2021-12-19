@@ -7,6 +7,20 @@
   background: url("../assets/jpg/guitar-bg2.jpg") no-repeat center center fixed;
 }
 
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .guitar-string-header {
   height: 80px;
   width: 100%;
