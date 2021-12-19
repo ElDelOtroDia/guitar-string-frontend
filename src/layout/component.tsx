@@ -1,17 +1,24 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import images from "../assets";
 import { loadingSelector } from "../redux/ui/selectors";
-import { userTokenSelector } from "../redux/user/selectors";
+import {
+  userRefreshTokenSelector,
+  userTokenSelector,
+} from "../redux/user/selectors";
 import "./styles.css";
 import metronome from "../assets/lottie/metronome.json";
 import Lottie, { Options } from "react-lottie";
+import { popLoading, pushLoading } from "../redux/ui/actions";
+import { logout } from "../services/user/services";
+import { logoutSuccess } from "../redux/user/actions";
 
 const Layout: FC = ({ children }) => {
   const { GuitarPick } = images;
 
   const tokenUser = useSelector(userTokenSelector);
+  const refreshTokenUser = useSelector(userRefreshTokenSelector);
   const loading = useSelector(loadingSelector);
 
   const lottieOptions: Options = {
@@ -21,6 +28,23 @@ const Layout: FC = ({ children }) => {
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
+  };
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const onLogout = async () => {
+    try {
+      dispatch(pushLoading());
+      const logoutResponse = await logout(refreshTokenUser);
+      if (logoutResponse === 204) {
+        await dispatch(logoutSuccess());
+        navigate("/login", { replace: true });
+      }
+    } catch (e: any) {
+      console.log(e);
+    } finally {
+      dispatch(popLoading());
+    }
   };
 
   return (
@@ -56,9 +80,7 @@ const Layout: FC = ({ children }) => {
                 <Link className="link-no-style" to="/manage-courses">
                   <li>Manage courses</li>
                 </Link>
-                <Link className="link-no-style" to="/login">
-                  <li>Logout</li>
-                </Link>
+                <li onClick={() => onLogout()}>Logout</li>
               </>
             ) : null}
           </ul>

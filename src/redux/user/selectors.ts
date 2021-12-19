@@ -14,6 +14,11 @@ export const userTokenSelector = createSelector(
   (user) => user.token
 );
 
+export const userRefreshTokenSelector = createSelector(
+  userInfoSelector,
+  (user) => user.refreshToken
+);
+
 export const userUsernameSelector = createSelector(
   userInfoSelector,
   (user) => user.username
