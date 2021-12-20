@@ -14,6 +14,26 @@ export const fetchCourses = async (): Promise<[]> => {
   }
 };
 
+export const createCourse = async (body: any): Promise<any> => {
+  const response = await authorizationFetch(
+    `http://104.237.129.63:8016/api/course/`,
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+    }
+  );
+
+  if (response.status === 201) {
+    const course = await response.json();
+    console.log(course);
+
+    return course;
+  } else {
+    throw new Error("Request error");
+  }
+};
+
 export const patchGeneralCourseInfo = async (
   courseId: number,
   body: any
@@ -55,6 +75,26 @@ export const deleteCourse = async (courseId: number): Promise<any> => {
   }
 };
 
+export const createExercise = async (body: any): Promise<any> => {
+  const response = await authorizationFetch(
+    `http://104.237.129.63:8016/api/exercise/`,
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+    }
+  );
+
+  if (response.status === 201) {
+    const course = await response.json();
+    console.log(course);
+
+    return course;
+  } else {
+    throw new Error("Request error");
+  }
+};
+
 export const patchExerciseInfo = async (
   exerciseId: number,
   body: any
@@ -73,6 +113,24 @@ export const patchExerciseInfo = async (
     console.log(exercise);
 
     return exercise;
+  } else {
+    throw new Error("Request error");
+  }
+};
+
+export const deleteExercise = async (exerciseId: number): Promise<any> => {
+  const response = await authorizationFetch(
+    `http://104.237.129.63:8016/api/exercise/${exerciseId}/`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  if (response.status === 200 || response.status === 204) {
+    // const course = await response.json();
+    console.log("Exercise deleted");
+
+    // return course;
   } else {
     throw new Error("Request error");
   }

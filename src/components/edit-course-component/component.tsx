@@ -11,7 +11,7 @@ import {
 import { onSubmitGeneralData } from "./form";
 import EditExerciseComponent from "../edit-exercise-component/component";
 
-const ManageCourseComponent = (props: any) => {
+const EditCourseComponent = (props: any) => {
   const { course_id, name, description, exercises, difficulty_id } =
     props.course;
 
@@ -34,14 +34,24 @@ const ManageCourseComponent = (props: any) => {
     updateCourse();
   };
 
+  let initialValues = {
+    course_id: course_id,
+    courseName: name,
+    courseDescription: description,
+    difficulty: difficulty_id,
+  };
+
   const generalDataFormik = useFormik({
-    initialValues: {
-      courseName: name,
-      courseDescription: description,
-      difficulty: difficulty_id,
-    },
+    initialValues,
     onSubmit: (values) => onSubmitGeneralData(values, onSaveGeneralCourse),
   });
+
+  if (generalDataFormik.values.course_id !== course_id) {
+    generalDataFormik.values.course_id = course_id;
+    generalDataFormik.values.courseName = name;
+    generalDataFormik.values.courseDescription = description;
+    generalDataFormik.values.difficulty = difficulty_id;
+  }
 
   const deleteCourseAsync = async () => {
     try {
@@ -125,4 +135,4 @@ const ManageCourseComponent = (props: any) => {
   );
 };
 
-export default ManageCourseComponent;
+export default EditCourseComponent;

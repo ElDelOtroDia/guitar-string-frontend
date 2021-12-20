@@ -22,7 +22,7 @@ const Home: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const getCourses = async () => {
-      try { 
+      try {
         dispatch(pushLoading());
         const receivedCourses = await fetchCourses();
         setCourses(receivedCourses);

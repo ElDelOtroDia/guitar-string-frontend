@@ -92,6 +92,22 @@
   cursor: pointer;
 }
 
+.manage-exercise-delete-btn {
+  height: 2.2rem;
+  font-size: 1rem;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid var(--guitar-orange);
+  color: var(--guitar-orange);
+  transition: all 0.25s;
+}
+
+.manage-exercise-delete-btn:hover {
+  background-color: var(--guitar-orange);
+  color: white;
+  cursor: pointer;
+}
+
 .manage-course-section-divider {
   border: 0;
   border-top: 1px solid var(--guitar-orange);
@@ -128,6 +144,8 @@
   width: fit-content;
   padding-left: 10px;
   padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .exercise-component-container {

@@ -3,7 +3,10 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { popLoading, pushLoading } from "../../redux/ui/actions";
-import { patchExerciseInfo } from "../../services/courses/services";
+import {
+  deleteExercise,
+  patchExerciseInfo,
+} from "../../services/courses/services";
 import { onSubmitExerciseData } from "./form";
 
 const EditExerciseComponent = (props: any) => {
@@ -37,6 +40,19 @@ const EditExerciseComponent = (props: any) => {
     },
     onSubmit: (values) => onSubmitExerciseData(values, onSaveExerciseData),
   });
+
+  const deleteExerciseAsync = async () => {
+    try {
+      dispatch(pushLoading());
+      await deleteExercise(exercise_id);
+
+      navigate("/");
+    } catch (e: any) {
+      console.log(e);
+    } finally {
+      dispatch(popLoading());
+    }
+  };
 
   return (
     <div className="manage-single-course-container">
@@ -79,6 +95,13 @@ const EditExerciseComponent = (props: any) => {
           onClick={() => exerciseDataFormik.handleSubmit()}
         >
           Save changes
+        </button>
+        <button
+          type="submit"
+          className="manage-course-exercise-btn"
+          onClick={() => deleteExerciseAsync()}
+        >
+          Delete exercise
         </button>
       </div>
     </div>

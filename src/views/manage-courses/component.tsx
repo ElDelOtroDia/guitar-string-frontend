@@ -4,13 +4,14 @@ import { Course } from "../../models/courses/types";
 import { popLoading, pushLoading } from "../../redux/ui/actions";
 import { fetchCourses } from "../../services/courses/services";
 import "./styles.css";
-import ManageCourseComponent from "../../components/manage-course-component/component";
+import EditCourseComponent from "../../components/edit-course-component/component";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import AddCourseComponent from "../../components/add-course-component/component";
 
 const ManageCourses: FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState("0");
 
   const [courses, setCourses] = useState<Course[] | null>(null);
-  console.log(courses);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,15 +36,28 @@ const ManageCourses: FC = () => {
     <div className="manage-courses-container">
       <div className="courses-container">
         <div className="courses-list">
+          <button
+            className="add-course-container"
+            onClick={() =>
+              activeIndex !== "addCourseExercise"
+                ? setActiveIndex("addCourseExercise")
+                : null
+            }
+          >
+            <p>Add course or exercise</p>
+            <IoIosAddCircleOutline className="add-icon" />
+          </button>
           <p className="courses-title">Courses</p>
           {courses?.map((course, index) => (
             <div
               key={`course-view-${course.course_id}`}
               className={`course-card-container ${
-                activeIndex === index ? "active-course-card" : ""
+                activeIndex === String(index) ? "active-course-card" : ""
               }`}
               onClick={() =>
-                activeIndex !== index ? setActiveIndex(index) : null
+                activeIndex !== String(index)
+                  ? setActiveIndex(String(index))
+                  : null
               }
             >
               <p>{course.name}</p>
@@ -51,8 +65,11 @@ const ManageCourses: FC = () => {
           ))}
         </div>
         <div className="courses-view">
-          {courses?.length ? (
-            <ManageCourseComponent course={courses[activeIndex]} />
+          {courses?.length && activeIndex === "addCourseExercise" ? (
+            <AddCourseComponent courses={courses} />
+          ) : null}
+          {courses?.length && Number(activeIndex) >= 0 ? (
+            <EditCourseComponent course={courses[+activeIndex]} />
           ) : null}
         </div>
       </div>

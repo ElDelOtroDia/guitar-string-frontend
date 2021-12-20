@@ -1,0 +1,108 @@
+.add-course-component-container {
+  height: auto;
+  font-size: 1.1rem;
+  padding: 50px 50px 20px;
+  max-width: 78ch;
+  margin: auto;
+}
+
+.add-course-title {
+  text-align: center;
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 2rem;
+  color: var(--guitar-orange);
+}
+
+.add-course-general-form {
+  margin-top: 20px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px white solid;
+  border-radius: 5px;
+  /* gap: 30px; */
+}
+
+.add-single-exercise-container {
+  margin: auto;
+  margin-bottom: 15px;
+  max-width: 470px;
+  font-size: 1rem;
+  min-width: 400px;
+  width: 100%;
+}
+
+.add-course-input-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 470px;
+  font-size: 1rem;
+  min-width: 400px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.add-course-input-container input {
+  font-family: "Oxygen", sans-serif;
+  font-size: 1.1rem;
+  padding: 10px 8px;
+  border-radius: 10px;
+}
+
+.add-course-input-container textarea {
+  font-family: "Oxygen", sans-serif;
+  font-size: 1.1rem;
+  padding: 10px 8px;
+  border-radius: 10px;
+}
+
+.add-course-input-container select {
+  font-family: "Oxygen", sans-serif;
+  font-size: 1.1rem;
+  padding: 10px 8px;
+  border-radius: 10px;
+}
+
+.add-course-save-btn {
+  height: 2.2rem;
+  font-size: 1rem;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid white;
+  color: white;
+  transition: all 0.25s;
+  width: fit-content;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.add-course-save-btn:hover {
+  background-color: var(--guitar-orange);
+  cursor: pointer;
+}
+
+.add-course-section-divider {
+  border: 0;
+  border-top: 1px solid var(--guitar-orange);
+}
+
+.add-exercise-form-container {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px white solid;
+  border-radius: 5px;
+}
+
+.add-exercise-title {
+  text-align: center;
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--guitar-orange);
+}
