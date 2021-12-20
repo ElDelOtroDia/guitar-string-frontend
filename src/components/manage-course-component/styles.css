@@ -1,0 +1,135 @@
+.manage-course-component {
+  height: auto;
+  font-size: 1.1rem;
+  padding: 50px 50px 20px;
+  max-width: 78ch;
+  margin: auto;
+}
+
+.manage-course-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.manage-course-header div:nth-child(1),
+.manage-course-save-btn,
+.manage-course-delete-btn-container {
+  width: 15%;
+}
+
+.manage-course-name {
+  width: 40%;
+  text-align: center;
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 2.5rem;
+  color: var(--guitar-orange);
+}
+
+.manage-course-delete-btn-container {
+  text-align: center;
+}
+
+.manage-course-delete-btn {
+  font-size: 1.5rem;
+  transition: all 0.25s;
+}
+
+.manage-course-delete-btn:hover {
+  color: var(--guitar-orange);
+  cursor: pointer;
+}
+
+.manage-course-general-form {
+  margin-top: 20px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px white solid;
+  border-radius: 5px;
+  gap: 30px;
+}
+
+.manage-course-input-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 470px;
+  font-size: 1rem;
+  min-width: 400px;
+  width: 100%;
+}
+
+.manage-course-input-container input {
+  font-family: "Oxygen", sans-serif;
+  font-size: 1.1rem;
+  padding: 10px 8px;
+  border-radius: 10px;
+}
+
+.manage-course-input-container textarea {
+  font-family: "Oxygen", sans-serif;
+  font-size: 1.1rem;
+  padding: 10px 8px;
+  border-radius: 10px;
+}
+
+.manage-course-save-btn {
+  height: 2.2rem;
+  font-size: 1rem;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid white;
+  color: white;
+  transition: all 0.25s;
+}
+
+.manage-course-save-btn:hover {
+  background-color: var(--guitar-orange);
+  cursor: pointer;
+}
+
+.manage-course-section-divider {
+  border: 0;
+  border-top: 1px solid var(--guitar-orange);
+}
+
+.manage-course-exercises-form {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px white solid;
+  border-radius: 5px;
+}
+
+.manage-exercises-title {
+  text-align: center;
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.manage-course-input-container {
+  margin-bottom: 15px;
+}
+
+.manage-course-save-btn-container {
+  width: 100%;
+  text-align: center;
+}
+
+.manage-course-save-btn-container button {
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.exercise-component-container {
+  width: 100%;
+}

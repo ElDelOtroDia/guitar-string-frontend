@@ -16,7 +16,7 @@ export interface Exercise {
 }
 
 export interface Course {
-  id: number;
+  course_id: number;
   name: string;
   description: string;
   difficulty: Difficulty;

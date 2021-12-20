@@ -53,7 +53,7 @@ const Home: FC = () => {
           </div>
           {courses?.map((course, index) => (
             <div
-              key={`course-view-${course.id}`}
+              key={`course-view-${course.course_id}`}
               className={`course-card-container ${
                 activeIndex === index ? "active-course-card" : ""
               }`}

@@ -1,0 +1,67 @@
+.manage-courses-container {
+  height: 100%;
+  padding: 20px;
+  overflow-y: hidden;
+  max-width: 1600px;
+  margin: auto;
+}
+
+.courses-container {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  height: 100%;
+  padding: 20px;
+  color: white;
+  backdrop-filter: blur(5px);
+}
+
+.courses-list {
+  flex: 25%;
+  border: solid 1px gainsboro;
+  border-radius: 5px 0 0 5px;
+  padding: 10px;
+  overflow-y: scroll;
+  height: calc(100vh - 80px - 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.courses-title {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.course-card-container {
+  border: 1px solid gainsboro;
+  padding: 10px;
+  transition: all 0.25s;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.course-card-container:hover {
+  border: var(--guitar-orange) 1px solid;
+  color: var(--guitar-orange);
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+
+.active-course-card {
+  background-color: var(--guitar-orange);
+  color: white;
+  font-weight: bold;
+  border-color: var(--guitar-orange);
+}
+
+.active-course-card:hover {
+  color: white;
+  border-radius: 5px;
+}
