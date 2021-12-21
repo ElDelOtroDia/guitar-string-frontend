@@ -6,22 +6,31 @@ import { popLoading, pushLoading } from "../../redux/ui/actions";
 import {
   deleteExercise,
   patchExerciseInfo,
+  uploadExerciseImg,
 } from "../../services/courses/services";
 import { onSubmitExerciseData } from "./form";
+import { useState } from "react";
 
 const EditExerciseComponent = (props: any) => {
   const { name, description, image_url, exercise_id } = props.exercise;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [imgUrl, setImgUrl] = useState(null);
 
   const onSaveExerciseData = (exercise_id: any, exerciseInfo: any) => {
     console.log("Saving exercise");
     const updateExercise = async () => {
       try {
         dispatch(pushLoading());
-        await patchExerciseInfo(exercise_id, exerciseInfo);
-        navigate("/");
+        const imgUr = await uploadExerciseImg(imgUrl);
+        if (imgUr) {
+          await patchExerciseInfo(exercise_id, {
+            ...exerciseInfo,
+            image_url: imgUr,
+          });
+          navigate("/");
+        }
       } catch (e: any) {
         console.log(e);
       } finally {
@@ -79,14 +88,18 @@ const EditExerciseComponent = (props: any) => {
         />
       </div>
       <div className="manage-course-input-container">
-        <label htmlFor="">Image url</label>
+        <label htmlFor="">Image</label>
         <input
+          type="file"
+          onChange={(e: any) => setImgUrl(e.target.files[0])}
+        />
+        {/* <input
           name="exerciseImg"
           type="text"
           onChange={exerciseDataFormik.handleChange}
           onBlur={exerciseDataFormik.handleBlur}
           value={exerciseDataFormik.values.exerciseImg}
-        />
+        /> */}
       </div>
       <div className="manage-course-save-btn-container">
         <button
@@ -98,7 +111,7 @@ const EditExerciseComponent = (props: any) => {
         </button>
         <button
           type="submit"
-          className="manage-course-exercise-btn"
+          className="manage-exercise-delete-btn"
           onClick={() => deleteExerciseAsync()}
         >
           Delete exercise

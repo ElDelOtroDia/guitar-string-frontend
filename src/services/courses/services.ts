@@ -1,3 +1,5 @@
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../../firebase";
 import { authorizationFetch } from "../../utils/requests/auth";
 
 export const fetchCourses = async (): Promise<[]> => {
@@ -134,4 +136,16 @@ export const deleteExercise = async (exerciseId: number): Promise<any> => {
   } else {
     throw new Error("Request error");
   }
+};
+
+export const uploadExerciseImg = async (file: any) => {
+  if (!file) return;
+  let imgUrl = null;
+
+  const storageRef = ref(storage, `exercises/${Date.now()}-${file.name}`);
+  const uploadTask = await uploadBytesResumable(storageRef, file);
+
+  imgUrl = await getDownloadURL(uploadTask.ref);
+
+  return imgUrl;
 };
