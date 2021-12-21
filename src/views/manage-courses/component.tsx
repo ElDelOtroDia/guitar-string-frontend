@@ -65,7 +65,7 @@ const ManageCourses: FC = () => {
           ))}
         </div>
         <div className="courses-view">
-          {courses?.length && activeIndex === "addCourseExercise" ? (
+          {activeIndex === "addCourseExercise" ? (
             <AddCourseComponent courses={courses} />
           ) : null}
           {courses?.length && Number(activeIndex) >= 0 ? (

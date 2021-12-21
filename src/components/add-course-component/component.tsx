@@ -1,8 +1,13 @@
 import { useFormik } from "formik";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { popLoading, pushLoading } from "../../redux/ui/actions";
-import { createCourse, createExercise } from "../../services/courses/services";
+import {
+  createCourse,
+  createExercise,
+  uploadExerciseImg,
+} from "../../services/courses/services";
 import { onSubmitCourseData, onSubmitExerciseData } from "./form";
 import "./styles.css";
 
@@ -11,6 +16,7 @@ const AddCourseComponent = (props: any) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [imgUrl, setImgUrl] = useState(null);
 
   const createCourseLocalFn = (courseInfo: any) => {
     const addCourse = async () => {
@@ -27,12 +33,18 @@ const AddCourseComponent = (props: any) => {
     addCourse();
   };
 
-  const createExerciseLocalFn = (courseInfo: any) => {
+  const createExerciseLocalFn = (exerciseInfo: any) => {
     const addCourse = async () => {
       try {
         dispatch(pushLoading());
-        await createExercise(courseInfo);
-        navigate("/");
+        const imgUr = await uploadExerciseImg(imgUrl);
+        if (imgUr) {
+          await createExercise({
+            ...exerciseInfo,
+            image_url: imgUr,
+          });
+          navigate("/");
+        }
       } catch (e: any) {
         console.log(e);
       } finally {
@@ -139,14 +151,18 @@ const AddCourseComponent = (props: any) => {
             />
           </div>
           <div className="add-course-input-container">
-            <label htmlFor="">Image url</label>
+            <label htmlFor="">Image</label>
             <input
+              type="file"
+              onChange={(e: any) => setImgUrl(e.target.files[0])}
+            />
+            {/* <input
               name="exerciseImageUrl"
               type="text"
               onChange={exerciseDataFormik.handleChange}
               onBlur={exerciseDataFormik.handleBlur}
               value={exerciseDataFormik.values.exerciseImageUrl}
-            />
+            /> */}
           </div>
           <div className="add-course-input-container">
             <label htmlFor="course_id">Course</label>

@@ -68,10 +68,8 @@ export const deleteCourse = async (courseId: number): Promise<any> => {
   );
 
   if (response.status === 200 || response.status === 204) {
-    const course = await response.json();
-    console.log(course);
+    console.log("Course deleted");
 
-    return course;
   } else {
     throw new Error("Request error");
   }
